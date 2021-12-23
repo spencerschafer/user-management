@@ -1,0 +1,35 @@
+{
+  "name": "user-management",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.45.1"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.1.2",
+    "@types/node": "17.0.4",
+    "@types/react": "17.0.38",
+    "eslint": "8.5.0",
+    "eslint-config-next": "12.0.7",
+    "prettier": "^2.5.1",
+    "typescript": "4.5.4"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": false,
+    "jsxSingleQuote": true,
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}
