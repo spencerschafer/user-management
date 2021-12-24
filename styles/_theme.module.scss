@@ -1,7 +1,35 @@
-$black: #373e5c;
-$white: #ffffff;
-$primary: #2895f6;
-$primary-hover: rgba($primary, 0.1);
-$grey-dark: #b3b1bf;
-$grey-medium: #e6e8ec;
-$grey-light: rgba($grey-medium, 0.25);
+$max-width            : 1080px;
+$breakpointDesktopMin : 961px;
+$breakpointTabletMax  : 960px;
+$breakpointTabletMin  : 601px;
+$breakpointMobileMax  : 600px;
+
+$black                : #373e5c;
+$white                : #ffffff;
+$primary              : #2895f6;
+$primary-hover        : rgba($primary, 0.1);
+$secondary            : #373e5c;
+$grey-dark            : #b3b1bf;
+$grey-medium          : #e6e8ec;
+$grey-light           : rgba($grey-medium, 0.25);
+
+$box-shadow           : 0px 4px 4px $grey-medium;
+
+$font-family          : 'Nunito', sans-serif;
+
+$regular              : 400;
+$semi-bold            : 600;
+$bold                 : 700;
+
+$h1                   : $bold 35px/41px $font-family;
+$h2                   : $bold 16px/22px $font-family;
+$h3                   : $semi-bold 15px/21px $font-family;
+$h4                   : $regular 15px/21px $font-family;
+$h5                   : $semi-bold 14px/20px $font-family;
+
+$layer-0              : 0;
+$layer-1              : 10;
+$layer-2              : 20;
+$layer-3              : 30;
+$layer-4              : 40;
+$layer-5              : 50;
