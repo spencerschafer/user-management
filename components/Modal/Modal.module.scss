@@ -1,0 +1,78 @@
+@import 'styles/theme.module';
+
+.root {
+  background-color : $modal-background;
+  bottom           : 0;
+  display          : none;
+  height           : 100%;
+  left             : 0;
+  position         : fixed;
+  right            : 0;
+  top              : 0;
+  width            : 100%;
+  z-index          : $layer-1;
+}
+
+.container {
+  background-color : $white;
+  border-radius    : 8px;
+  box-sizing       : border-box;
+  display          : flex;
+  flex-direction   : column;
+  height           : max-content;
+  margin           : auto;
+  max-width        : 450px;
+  position         : relative;
+  width            : 100%;
+  z-index          : 10;
+}
+
+.header {
+  align-items      : center;
+  background-color : $grey-light;
+  border-bottom    : 1px solid $grey-medium;
+  box-sizing       : border-box;
+  display          : flex;
+  justify-content  : space-between;
+  padding          : 16px 32px;
+}
+
+.heading {
+  color : $secondary;
+  font  : $h1;
+}
+
+.button {
+  height : 38px;
+  right  : 0;
+  width  : 38px;
+
+  &:hover {
+    cursor : pointer;
+  }
+}
+
+.closeIcon {
+  fill      : $grey-dark;
+  transform : scale(2.3);
+
+  &:hover {
+    fill : $primary;
+  }
+}
+
+.inputFields {
+  display        : flex;
+  flex-direction : column;
+  padding        : 16px 32px 0;
+}
+
+.footer {
+  display         : flex;
+  justify-content : flex-end;
+  padding         : 0 32px 16px;
+}
+
+.open {
+  display : flex;
+}

@@ -35,7 +35,6 @@
 }
 
 .mainRoot {
-  //background-color : $primary-hover;
   display         : flex;
   height          : 100%;
   justify-content : center;
@@ -65,28 +64,6 @@
     @extend .mainRow;
     height : 100%;
     width  : 100%;
-  }
-}
-
-.mainSearch {
-  border        : 1px solid $grey-medium;
-  border-radius : 10px;
-  height        : 38px;
-  width         : 250px;
-}
-
-.mainButton {
-  background-color : $primary;
-  border-radius    : 10px;
-  color            : $white;
-  font             : $h2;
-  height           : 38px;
-  width            : 150px;
-
-  &:hover {
-    box-shadow : $box-shadow;
-    cursor     : pointer;
-    transform  : translateY(-1px);
   }
 }
 
