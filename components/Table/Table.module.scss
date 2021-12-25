@@ -33,14 +33,19 @@
   padding     : 0 24px;
 
   & > td:nth-child(1) {
-    color : $secondary;
-    font  : $h3;
+    color         : $secondary;
+    font          : $h3;
+    overflow      : hidden;
+    text-overflow : ellipsis;
+    width         : 125px;
   }
 
   & > td:nth-child(2) {
-    color       : $grey-dark;
-    font        : $h4;
-    margin-left : 32px;
+    color         : $grey-dark;
+    font          : $h4;
+    margin-left   : 32px;
+    overflow      : hidden;
+    text-overflow : ellipsis;
   }
 
   & > td:nth-child(3) {
@@ -55,8 +60,8 @@
 .listButton {
   height       : 38px;
   margin-right : -16px;
+  transform    : scale(1.25);
   width        : 38px;
-  transform: scale(1.25);
 
   &:hover {
     cursor : pointer;
