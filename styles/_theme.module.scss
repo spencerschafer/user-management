@@ -18,12 +18,13 @@ $box-shadow           : 0px 4px 4px $grey-medium;
 $box-shadow-focus     : 0 0 0 3px rgb(58 151 212 / 36%), 0 0 0 1px rgb(60 66 87 / 16%);
 
 $font-family          : 'Nunito', sans-serif;
+$font-family-alt      : 'Roboto', sans-serif;
 
 $regular              : 400;
 $semi-bold            : 600;
 $bold                 : 700;
 
-$h1                   : $bold 35px/41px $font-family;
+$h1                   : $bold 35px/41px $font-family-alt;
 $h2                   : $bold 16px/22px $font-family;
 $h3                   : $semi-bold 15px/21px $font-family;
 $h4                   : $regular 15px/21px $font-family;
