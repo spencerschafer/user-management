@@ -1,69 +1,25 @@
-import {FC} from 'react';
+import {FC, useEffect} from 'react';
 import styles from './Table.module.scss';
+import {getAllItems} from '../../lib/helpers';
+import TableHeaderRow from './rows/TableHeaderRow';
+import TableRowNoUsers from './rows/TableRowNoUsers';
+import TableRow from './rows/TableRow';
 
 type TableProps = {}
 
 const Table: FC<TableProps> = ({}) => {
+
+  useEffect(() => {
+    getAllItems();
+  }, []);
+
   return <table className={styles.root}>
     <thead className={styles.header}>
-    <tr>
-      <td>
-        Users
-      </td>
-    </tr>
+    <TableHeaderRow />
     </thead>
     <tbody className={styles.body}>
-    {/*<tr className={styles.tableRowNoUsers}>*/}
-    {/*  <td>No users found</td>*/}
-    {/*</tr>*/}
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
-    <tr className={styles.row}>
-      <td>Spencer Schafer</td>
-    </tr>
+    <TableRowNoUsers />
+    <TableRow username={'Spencer Schafer'} email={'spencerschafer@gmail.com'}/>
     </tbody>
   </table>;
 };

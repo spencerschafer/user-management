@@ -19,9 +19,8 @@
 }
 
 .body {
-  height     : 100%;
   max-height : 550px;
-  overflow-y : scroll;
+  overflow-y : auto;
   width      : 100%;
 }
 
@@ -29,11 +28,20 @@
   align-items : center;
   border      : 1px solid $grey-medium;
   box-sizing  : border-box;
-  color       : $secondary;
   display     : flex;
-  font        : $h3;
   height      : 50px;
   padding     : 0 24px;
+
+  & > td:nth-child(1) {
+    color : $secondary;
+    font  : $h3;
+  }
+
+  & > td:nth-child(2) {
+    color       : $grey-dark;
+    font        : $h4;
+    margin-left : 32px;
+  }
 }
 
 .rowNoUsers {
