@@ -5,6 +5,7 @@ import Search from '../components/Search/Search';
 import {useEffect, useState} from 'react';
 import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
+import Table from '../components/Table/Table';
 
 const Home: NextPage = () => {
   const [open, setOpen] = useState(false);
@@ -30,68 +31,7 @@ const Home: NextPage = () => {
             </Button>
           </div>
           <div className={styles.mainRow}>
-            <table className={styles.tableRoot}>
-              <thead className={styles.tableHeader}>
-              <tr>
-                <td>
-                  Users
-                </td>
-              </tr>
-              </thead>
-              <tbody className={styles.tableBody}>
-              {/*<tr className={styles.tableRowNoUsers}>*/}
-              {/*  <td>No users found</td>*/}
-              {/*</tr>*/}
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              <tr className={styles.tableRow}>
-                <td>Spencer Schafer</td>
-              </tr>
-              </tbody>
-            </table>
+            <Table />
           </div>
         </div>
       </div>

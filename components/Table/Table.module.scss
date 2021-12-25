@@ -1,0 +1,46 @@
+@import 'styles/theme.module';
+
+.root {
+  display        : flex;
+  flex-direction : column;
+  height         : 100%;
+  width          : 100%;
+}
+
+.header {
+  align-items      : center;
+  background-color : $grey-light;
+  border           : 1px solid $grey-medium;
+  color            : $grey-dark;
+  display          : flex;
+  font             : $h3;
+  height           : 50px;
+  padding          : 0 24px;
+}
+
+.body {
+  height     : 100%;
+  max-height : 550px;
+  overflow-y : scroll;
+  width      : 100%;
+}
+
+.row {
+  align-items : center;
+  border      : 1px solid $grey-medium;
+  box-sizing  : border-box;
+  color       : $secondary;
+  display     : flex;
+  font        : $h3;
+  height      : 50px;
+  padding     : 0 24px;
+}
+
+.rowNoUsers {
+  align-items : center;
+  color       : $grey-dark;
+  display     : flex;
+  font        : $h3;
+  height      : 50px;
+  padding     : 0 24px;
+}
