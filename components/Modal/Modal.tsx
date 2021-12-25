@@ -6,18 +6,21 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import {userReducer, userState} from '../../lib/reducer';
 import {ADD_USER_KEY, EMAIL_KEY, PASSWORD_KEY, USERNAME_KEY} from '../../lib/keys';
+import {getAllItems} from '../../lib/helpers';
 
 type ModalProps = {
   open: boolean;
   onClose: Dispatch<SetStateAction<any>>;
+  onSubmit: Dispatch<SetStateAction<any>>;
 }
 
-const Modal: FC<ModalProps> = ({open, onClose}) => {
+const Modal: FC<ModalProps> = ({open, onClose, onSubmit}) => {
   const [state, dispatch] = useReducer(userReducer, userState);
 
   const addUser = () => {
     localStorage.setItem(state[EMAIL_KEY], JSON.stringify(state));
     dispatch({type: ADD_USER_KEY});
+    onSubmit(getAllItems());
     onClose(false);
   };
 

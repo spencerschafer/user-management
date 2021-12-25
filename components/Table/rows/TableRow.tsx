@@ -1,3 +1,4 @@
+import EllipsisIcon from '../../../public/three-dots-vertical.svg';
 import styles from '../Table.module.scss';
 import {FC} from 'react';
 
@@ -11,6 +12,9 @@ const TableHeaderRow: FC<TableHeaderRowProps> = ({username, email}) => {
     <tr className={styles.row}>
       <td>{username}</td>
       <td>{email}</td>
+      <td>
+        <button className={styles.listButton}><EllipsisIcon className={styles.rowIcon} /></button>
+      </td>
     </tr>
   </>;
 };

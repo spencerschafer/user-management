@@ -1,4 +1,9 @@
-export const getAllItems = (): void => {
-  const items = Object.keys(localStorage);
-  console.log(items);
+export const getAllItems = (): any => {
+  try {
+    const items = Object.keys(localStorage);
+    console.log(items);
+    return items;
+  } catch (err) {
+    return [];
+  }
 };
