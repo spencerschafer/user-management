@@ -2,7 +2,7 @@ import type {NextPage} from 'next';
 import EricssonLogo from '../public/logo.svg';
 import styles from '../styles/Home.module.scss';
 import Search from '../components/Search/Search';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
 import Table from '../components/Table/Table';
@@ -12,6 +12,7 @@ import Dropdown from '../components/Dropdown/Dropdown';
 const Home: NextPage = () => {
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState(getAllItems());
+  const ref = useRef(null);
 
   useEffect(() => {
     console.log('open:', open);
@@ -38,11 +39,11 @@ const Home: NextPage = () => {
             </Button>
           </div>
           <div className={styles.mainRow}>
-            <Table items={items} />
+            <Table items={items} updateItems={() => setItems(getAllItems())} />
           </div>
         </div>
       </div>
-      <Modal open={open} onClose={() => setOpen(false)} onSubmit={() => setItems(getAllItems())}/>
+      <Modal open={open} onClose={() => setOpen(false)} onSubmit={() => setItems(getAllItems())} outsideRef={ref} />
     </div>
   );
 };

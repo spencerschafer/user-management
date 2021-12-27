@@ -1,4 +1,4 @@
-import {Dispatch, FC, SetStateAction, useEffect, useReducer} from 'react';
+import {Dispatch, FC, MutableRefObject, SetStateAction, useEffect, useReducer} from 'react';
 import CloseIcon from '../../public/x.svg';
 import styles from './Modal.module.scss';
 import clsx from 'clsx';
@@ -12,9 +12,10 @@ type ModalProps = {
   open: boolean;
   onClose: Dispatch<SetStateAction<any>>;
   onSubmit: Dispatch<SetStateAction<any>>;
+  outsideRef: MutableRefObject<null>;
 }
 
-const Modal: FC<ModalProps> = ({open, onClose, onSubmit}) => {
+const Modal: FC<ModalProps> = ({open, onClose, onSubmit, outsideRef}) => {
   const [state, dispatch] = useReducer(userReducer, userState);
 
   const addUser = () => {
@@ -32,8 +33,21 @@ const Modal: FC<ModalProps> = ({open, onClose, onSubmit}) => {
     console.log(state);
   }, [state]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      // @ts-ignore
+      if (outsideRef.current && !outsideRef.current.contains(e.target)) {
+        onClose(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [outsideRef]);
+
   return <div className={clsx(styles.root, {[styles.open]: open})}>
-    <div className={styles.container}>
+    <div className={styles.container} ref={outsideRef}>
       <div className={styles.header}>
         <h1 className={styles.heading}>Add User</h1>
         <button className={styles.button} onClick={onClose}>

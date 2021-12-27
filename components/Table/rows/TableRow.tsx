@@ -1,26 +1,29 @@
 import EllipsisIcon from '../../../public/three-dots-vertical.svg';
 import styles from '../Table.module.scss';
-import {FC, useState} from 'react';
+import {FC, useRef, useState} from 'react';
 import Dropdown from '../../Dropdown/Dropdown';
+import {EMAIL_KEY, USERNAME_KEY} from '../../../lib/keys';
 
-type TableHeaderRowProps = {
-  data: any;
+type TableRowProps = {
+  item: any;
+  updateItems: any;
 }
 
-const TableHeaderRow: FC<TableHeaderRowProps> = ({data}) => {
+const TableRow: FC<TableRowProps> = ({item, updateItems}) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef(null);
 
   return <>
     <tr className={styles.row}>
-      <td>{data.username}</td>
-      <td>{data.email}</td>
+      <td>{item[USERNAME_KEY]}</td>
+      <td>{item[EMAIL_KEY]}</td>
       <td>
         <button className={styles.listButton} onClick={() => setOpen(!open)}><EllipsisIcon className={styles.rowIcon} />
         </button>
-        <Dropdown open={open} />
+        <Dropdown open={open} item={item} updateItems={updateItems} outsideRef={ref} setOpen={() => setOpen(false)} />
       </td>
     </tr>
   </>;
 };
 
-export default TableHeaderRow;
+export default TableRow;
