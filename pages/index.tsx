@@ -7,6 +7,7 @@ import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
 import Table from '../components/Table/Table';
 import {getAllItems} from '../lib/helpers';
+import Dropdown from '../components/Dropdown/Dropdown';
 
 const Home: NextPage = () => {
   const [open, setOpen] = useState(false);

@@ -28,13 +28,15 @@
 }
 
 .header {
-  align-items      : center;
-  background-color : $grey-light;
-  border-bottom    : 1px solid $grey-medium;
-  box-sizing       : border-box;
-  display          : flex;
-  justify-content  : space-between;
-  padding          : 16px 32px;
+  align-items             : center;
+  background-color        : $grey-light;
+  border-bottom           : 1px solid $grey-medium;
+  border-top-left-radius  : 8px;
+  border-top-right-radius : 8px;
+  box-sizing              : border-box;
+  display                 : flex;
+  justify-content         : space-between;
+  padding                 : 16px 32px;
 }
 
 .heading {

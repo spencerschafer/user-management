@@ -1,8 +1,8 @@
 const TableHeaderRow = () => {
   return <tr>
-    <td>
+    <th>
       Users
-    </td>
+    </th>
   </tr>;
 };
 

@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import styles from './Table.module.scss';
 import TableHeaderRow from './rows/TableHeaderRow';
-import TableRowNoUsers from './rows/TableRowNoUsers';
 import TableRow from './rows/TableRow';
 
 type TableProps = {items: any}
@@ -13,11 +12,10 @@ const Table: FC<TableProps> = ({items}) => {
     <TableHeaderRow />
     </thead>
     <tbody className={styles.body}>
-    {items.length === 0 ? <TableRowNoUsers /> : items.map((item: any, index: number) => {
-      console.log(items.length);
+    {/*{items.length === 0 ? <TableRowNoUsers /> : items.map((item: any, index: number) => {*/}
+    {items.map((item: any, index: number) => {
       const obj = JSON.parse(localStorage.getItem(item));
-      console.log(obj);
-      return <TableRow username={obj.username} email={obj.email} key={index} />;
+      return <TableRow data={obj} key={index} />;
     })}
     </tbody>
   </table>;
