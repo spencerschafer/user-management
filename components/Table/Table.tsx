@@ -1,4 +1,4 @@
-import {FC, useContext} from 'react';
+import {FC} from 'react';
 import styles from './Table.module.scss';
 import TableHeaderRow from './rows/TableHeaderRow';
 import TableRow from './rows/TableRow';

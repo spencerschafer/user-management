@@ -12,6 +12,18 @@ type DropdownProps = {
 const Dropdown: FC<DropdownProps> = ({item, open, outsideRef, setOpen}) => {
   const context = useContext(Context);
 
+  const editUser = (user: any) => {
+    context.editUser(user);
+    context.toggleOpen('edit');
+    setOpen(false);
+  };
+
+  const removeUser = (user: any) => {
+    context.removeUser(user);
+    context.updateUsers();
+    setOpen(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (e: any) => {
       // @ts-ignore
@@ -26,12 +38,8 @@ const Dropdown: FC<DropdownProps> = ({item, open, outsideRef, setOpen}) => {
   }, [outsideRef]);
 
   return (open ? <div className={styles.root} ref={outsideRef}>
-    <button className={styles.button}>Edit</button>
-    <button className={styles.button} onClick={() => {
-      context.removeUser(item);
-      setOpen(false);
-    }}>Delete
-    </button>
+    <button className={styles.button} onClick={() => editUser(item)}>Edit</button>
+    <button className={styles.button} onClick={() => removeUser(item)}>Delete</button>
   </div> : null);
 };
 

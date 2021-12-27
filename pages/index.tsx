@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         <div className={styles.mainContainer}>
           <div className={styles.mainRow}>
             <Search />
-            <Button onClick={() => context.toggleOpen(true)}>
+            <Button onClick={() => context.toggleOpen('add')}>
               Add User
             </Button>
           </div>
