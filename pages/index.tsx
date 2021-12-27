@@ -2,7 +2,7 @@ import type {NextPage} from 'next';
 import EricssonLogo from '../public/logo.svg';
 import styles from '../styles/Home.module.scss';
 import Search from '../components/Search/Search';
-import {useContext, useRef} from 'react';
+import {useContext, useEffect, useRef} from 'react';
 import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
 import Table from '../components/Table/Table';
@@ -11,6 +11,10 @@ import {Context} from '../lib/context';
 const Home: NextPage = () => {
   const context = useContext(Context);
   const ref = useRef(null);
+
+  useEffect(() => {
+    context.updateUsers();
+  }, []);
 
   return (
     <div className={styles.root}>
