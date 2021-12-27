@@ -6,10 +6,9 @@ import {EMAIL_KEY, USERNAME_KEY} from '../../../lib/keys';
 
 type TableRowProps = {
   item: any;
-  updateItems: any;
 }
 
-const TableRow: FC<TableRowProps> = ({item, updateItems}) => {
+const TableRow: FC<TableRowProps> = ({item}) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -20,7 +19,7 @@ const TableRow: FC<TableRowProps> = ({item, updateItems}) => {
       <td>
         <button className={styles.listButton} onClick={() => setOpen(!open)}><EllipsisIcon className={styles.rowIcon} />
         </button>
-        <Dropdown open={open} item={item} updateItems={updateItems} outsideRef={ref} setOpen={() => setOpen(false)} />
+        <Dropdown open={open} item={item} outsideRef={ref} setOpen={() => setOpen(false)} />
       </td>
     </tr>
   </>;

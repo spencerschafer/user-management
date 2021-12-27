@@ -1,26 +1,16 @@
-import {Dispatch, FC, MutableRefObject, SetStateAction, useEffect} from 'react';
+import {Dispatch, FC, MutableRefObject, SetStateAction, useContext, useEffect} from 'react';
 import styles from './Dropdown.module.scss';
-import {EMAIL_KEY} from '../../lib/keys';
-import {getAllItems} from '../../lib/helpers';
+import {Context} from '../../lib/context';
 
 type DropdownProps = {
   item: any;
   open: boolean;
   outsideRef: MutableRefObject<null>;
-  updateItems: any;
   setOpen: Dispatch<SetStateAction<any>>
 }
 
-const Dropdown: FC<DropdownProps> = ({item, open, outsideRef, updateItems, setOpen}) => {
-
-  const editUser = () => {
-
-  };
-
-  const deleteUser = () => {
-    localStorage.removeItem(localStorage.key(item));
-    updateItems(getAllItems());
-  };
+const Dropdown: FC<DropdownProps> = ({item, open, outsideRef, setOpen}) => {
+  const context = useContext(Context);
 
   useEffect(() => {
     const handleClickOutside = (e: any) => {
@@ -37,7 +27,11 @@ const Dropdown: FC<DropdownProps> = ({item, open, outsideRef, updateItems, setOp
 
   return (open ? <div className={styles.root} ref={outsideRef}>
     <button className={styles.button}>Edit</button>
-    <button className={styles.button} onClick={() => deleteUser()}>Delete</button>
+    <button className={styles.button} onClick={() => {
+      context.removeUser(item);
+      setOpen(false);
+    }}>Delete
+    </button>
   </div> : null);
 };
 

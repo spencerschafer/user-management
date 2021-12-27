@@ -1,4 +1,4 @@
-import {Dispatch, FC, MutableRefObject, SetStateAction, useEffect, useReducer} from 'react';
+import {Dispatch, FC, MutableRefObject, SetStateAction, useContext, useEffect, useReducer} from 'react';
 import CloseIcon from '../../public/x.svg';
 import styles from './Modal.module.scss';
 import clsx from 'clsx';
@@ -6,23 +6,22 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import {userReducer, userState} from '../../lib/reducer';
 import {ADD_USER_KEY, EMAIL_KEY, PASSWORD_KEY, USERNAME_KEY} from '../../lib/keys';
-import {getAllItems} from '../../lib/helpers';
+import {Context} from '../../lib/context';
 
 type ModalProps = {
   open: boolean;
-  onClose: Dispatch<SetStateAction<any>>;
-  onSubmit: Dispatch<SetStateAction<any>>;
   outsideRef: MutableRefObject<null>;
 }
 
-const Modal: FC<ModalProps> = ({open, onClose, onSubmit, outsideRef}) => {
+const Modal: FC<ModalProps> = ({open, outsideRef}) => {
+  const context = useContext(Context);
   const [state, dispatch] = useReducer(userReducer, userState);
 
   const addUser = () => {
     localStorage.setItem(state[EMAIL_KEY], JSON.stringify(state));
     dispatch({type: ADD_USER_KEY});
-    onSubmit(getAllItems());
-    onClose(false);
+    context.updateUsers();
+    context.toggleOpen(false);
   };
 
   const handleDispatch = (type: string, payload: any) => {
@@ -37,7 +36,7 @@ const Modal: FC<ModalProps> = ({open, onClose, onSubmit, outsideRef}) => {
     const handleClickOutside = (e: any) => {
       // @ts-ignore
       if (outsideRef.current && !outsideRef.current.contains(e.target)) {
-        onClose(false);
+        context.toggleOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -50,7 +49,7 @@ const Modal: FC<ModalProps> = ({open, onClose, onSubmit, outsideRef}) => {
     <div className={styles.container} ref={outsideRef}>
       <div className={styles.header}>
         <h1 className={styles.heading}>Add User</h1>
-        <button className={styles.button} onClick={onClose}>
+        <button className={styles.button} onClick={() => context.toggleOpen(false)}>
           <CloseIcon className={styles.closeIcon} />
         </button>
       </div>

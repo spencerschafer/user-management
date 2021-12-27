@@ -2,25 +2,15 @@ import type {NextPage} from 'next';
 import EricssonLogo from '../public/logo.svg';
 import styles from '../styles/Home.module.scss';
 import Search from '../components/Search/Search';
-import {useEffect, useRef, useState} from 'react';
+import {useContext, useRef} from 'react';
 import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
 import Table from '../components/Table/Table';
-import {getAllItems} from '../lib/helpers';
-import Dropdown from '../components/Dropdown/Dropdown';
+import {Context} from '../lib/context';
 
 const Home: NextPage = () => {
-  const [open, setOpen] = useState(false);
-  const [items, setItems] = useState(getAllItems());
+  const context = useContext(Context);
   const ref = useRef(null);
-
-  useEffect(() => {
-    console.log('open:', open);
-  }, [open]);
-
-  useEffect(() => {
-    setItems(getAllItems());
-  }, []);
 
   return (
     <div className={styles.root}>
@@ -34,16 +24,16 @@ const Home: NextPage = () => {
         <div className={styles.mainContainer}>
           <div className={styles.mainRow}>
             <Search />
-            <Button onClick={() => setOpen(true)}>
+            <Button onClick={() => context.toggleOpen(true)}>
               Add User
             </Button>
           </div>
           <div className={styles.mainRow}>
-            <Table items={items} updateItems={() => setItems(getAllItems())} />
+            <Table items={context.users} />
           </div>
         </div>
       </div>
-      <Modal open={open} onClose={() => setOpen(false)} onSubmit={() => setItems(getAllItems())} outsideRef={ref} />
+      <Modal open={context.open} outsideRef={ref} />
     </div>
   );
 };
