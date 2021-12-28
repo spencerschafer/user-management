@@ -19,7 +19,9 @@ const Home: NextPage = () => {
     <div className={styles.root}>
       <header className={styles.headerRoot}>
         <div className={styles.headerContainer}>
-          <EricssonLogo className={styles.headerLogo} />
+          <a href={`https://www.ericsson.com/`} target={'_blank'} rel={'noreferrer'}>
+            <EricssonLogo className={styles.headerLogo} />
+          </a>
           <div className={styles.headerText}>User Management</div>
         </div>
       </header>
