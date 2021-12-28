@@ -36,3 +36,7 @@ export const getErrorMessage = (key: string, obj: any) => {
     return undefined;
   }
 };
+
+export const containsUniqueEmail = (context: any): boolean => {
+  return !context.users.some((key: any) => key === context.state[EMAIL_KEY]);
+};

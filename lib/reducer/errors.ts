@@ -4,6 +4,11 @@ import {getErrorMessage} from '../validation';
 
 export const errorReducer = (state: any, action: any) => {
   switch (action.type) {
+    case EMAIL_KEY:
+      return {
+        [USER_CLICKED_SUBMIT]: true,
+        [EMAIL_KEY]: 'Email already exists',
+      };
     case VALIDATE_STATE_KEY:
       return {
         [USER_CLICKED_SUBMIT]: true,

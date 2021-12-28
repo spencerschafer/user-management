@@ -6,7 +6,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import {EMAIL_KEY, PASSWORD_KEY, RESET_STATE_KEY, USERNAME_KEY, VALIDATE_STATE_KEY} from '../../lib/keys';
 import {Context, ModalType} from '../../lib/context';
-import {schema, validateInput} from '../../lib/validation';
+import {containsUniqueEmail, schema, validateInput} from '../../lib/validation';
 
 type ModalProps = {
   open: ModalType;
@@ -19,11 +19,15 @@ const Modal: FC<ModalProps> = ({open, outsideRef}) => {
 
   const addUser = () => {
     validateInput(context.state).then(() => {
-      context.addUser(context.state);
-      context.updateUsers();
-      context.toggleOpen(null);
-      context.updateState(RESET_STATE_KEY);
-      context.updateErrors(RESET_STATE_KEY);
+      if (containsUniqueEmail(context)) {
+        context.addUser(context.state);
+        context.updateUsers();
+        context.toggleOpen(null);
+        context.updateState(RESET_STATE_KEY);
+        context.updateErrors(RESET_STATE_KEY);
+      } else {
+        context.updateErrors(EMAIL_KEY);
+      }
     }).catch((err) => {
       context.updateErrors(VALIDATE_STATE_KEY, err);
     });
