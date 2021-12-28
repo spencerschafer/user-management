@@ -40,6 +40,10 @@
     overflow      : hidden;
     text-overflow : ellipsis;
     width         : 125px;
+
+    @media screen and (max-width : $breakpointMobileMax) {
+      width : 50px;
+    }
   }
 
   & > td:nth-child(2) {
