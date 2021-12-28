@@ -1,7 +1,6 @@
 import type {NextPage} from 'next';
 import EricssonLogo from '../public/logo.svg';
 import styles from '../styles/Home.module.scss';
-import Search from '../components/Search/Search';
 import {useContext, useEffect, useRef} from 'react';
 import Modal from '../components/Modal/Modal';
 import Button from '../components/Button/Button';
