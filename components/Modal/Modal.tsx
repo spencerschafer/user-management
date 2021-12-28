@@ -33,6 +33,7 @@ const Modal: FC<ModalProps> = ({open, outsideRef}) => {
   const closeModal = () => {
     context.toggleOpen(null);
     context.updateState(RESET_STATE_KEY);
+    context.updateErrors(RESET_STATE_KEY);
   };
 
   useEffect(() => {
