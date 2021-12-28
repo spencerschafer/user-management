@@ -1,9 +1,9 @@
 import {createContext, FC, useEffect, useReducer, useState} from 'react';
 import {EDIT_USER_KEY, EMAIL_KEY, RESET_STATE_KEY, USER_CLICKED_SUBMIT, VALIDATE_STATE_KEY} from './keys';
-import {getAllUsers, validateInput} from './helpers';
+import {getAllUsers} from './helpers';
 import {userReducer, userState} from './reducer/state';
 import {errorReducer} from './reducer/errors';
-import {schema} from './validation';
+import {validateInput} from './validation';
 
 export type ModalType = null | 'add' | 'edit';
 

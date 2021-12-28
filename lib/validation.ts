@@ -12,16 +12,20 @@ export const specialCharRegExp = /(?=.*[!"#$%&'()*+,-./:;<=>?@\[\\\]^_`{|}~])/;
 export const schema = yup.object().shape({
   [USERNAME_KEY]: yup.string().required('Please enter a username'),
   [EMAIL_KEY]: yup.string()
-    .required('Please enter your email')
+    .required('Please enter an email')
     .matches(emailRegExp, 'Please enter a valid email'),
   [PASSWORD_KEY]: yup.string()
     .required('Please enter a password')
-    .min(7, 'Password needs to be 7 or more characters')
-    .matches(lowerCaseRegExp, 'Password needs at least 1 lowercase character')
-    .matches(upperCaseRegExp, 'Password needs at least 1 uppercase character')
-    .matches(digitRegExp, 'Password needs at least 1 number')
-    .matches(specialCharRegExp, 'Password needs at least 1 special character'),
+    .min(7, 'Requires at least 7 characters')
+    .matches(lowerCaseRegExp, 'Requires at least 1 lowercase character')
+    .matches(upperCaseRegExp, 'Requires at least 1 uppercase character')
+    .matches(digitRegExp, 'Requires at least 1 number')
+    .matches(specialCharRegExp, 'Requires at least 1 special character'),
 });
+
+export const validateInput = (state: any) => {
+  return schema.validate(state, {abortEarly: false});
+};
 
 export const getErrorMessage = (key: string, obj: any) => {
   const result = (_.find(obj.inner, val => val['path'] === key));

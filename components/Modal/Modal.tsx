@@ -6,8 +6,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import {EMAIL_KEY, PASSWORD_KEY, RESET_STATE_KEY, USERNAME_KEY, VALIDATE_STATE_KEY} from '../../lib/keys';
 import {Context, ModalType} from '../../lib/context';
-import {validateInput} from '../../lib/helpers';
-import {schema} from '../../lib/validation';
+import {schema, validateInput} from '../../lib/validation';
 
 type ModalProps = {
   open: ModalType;
