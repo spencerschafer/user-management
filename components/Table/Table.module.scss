@@ -50,8 +50,12 @@
     color         : $grey-dark;
     font          : $h4;
     margin-left   : 32px;
+    max-width     : 150px;
     overflow      : hidden;
     text-overflow : ellipsis;
+    @media screen and (max-width : $breakpointMobileMax) {
+      max-width : 150px;
+    }
   }
 
   & > td:nth-child(3) {

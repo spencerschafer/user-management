@@ -29,6 +29,7 @@
   @media screen and (max-width : $breakpointMobileMax) {
     border-radius : 0;
     height        : 100%;
+    max-width     : none;
   }
 }
 
