@@ -15,8 +15,10 @@ const Table: FC<TableProps> = ({items}) => {
     </thead>
     <tbody className={styles.body}>
     {items.length === 0 ? <TableRowNoUsers /> : items.map((item: any, index: number) => {
-      const obj = JSON.parse(localStorage.getItem(item));
-      return <TableRow item={obj} key={index} />;
+      const obj = localStorage.getItem(item);
+      if (obj) {
+        return <TableRow item={JSON.parse(obj)} key={index} />;
+      } else return null;
     })}
     </tbody>
   </table>;
