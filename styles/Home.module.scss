@@ -58,7 +58,8 @@
   &:nth-child(1) {
     @extend .mainRow;
     height          : 38px;
-    justify-content : space-between;
+    //justify-content : space-between;
+    justify-content: flex-end;
     margin          : 16px 0;
   }
 

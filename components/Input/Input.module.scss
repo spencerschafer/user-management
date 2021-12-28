@@ -6,9 +6,10 @@
   margin-bottom  : 16px;
 }
 
-.heading {
-  display       : flex;
-  margin-bottom : 8px;
+.header {
+  display         : flex;
+  justify-content : space-between;
+  margin-bottom   : 8px;
 }
 
 .heading {
@@ -27,9 +28,18 @@
 
   &:focus-visible, &:focus {
     box-shadow  : $box-shadow-focus;
-    caret-color   : $secondary;
+    caret-color : $secondary;
     outline     : none;
   }
+}
+
+.hasError {
+  border : 1px solid $error;
+}
+
+.error {
+  color : $error;
+  font  : $h5;
 }
 
 

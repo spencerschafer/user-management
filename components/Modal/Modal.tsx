@@ -4,8 +4,10 @@ import styles from './Modal.module.scss';
 import clsx from 'clsx';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import {EMAIL_KEY, PASSWORD_KEY, RESET_STATE_KEY, USERNAME_KEY} from '../../lib/keys';
+import {EMAIL_KEY, PASSWORD_KEY, RESET_STATE_KEY, USERNAME_KEY, VALIDATE_STATE_KEY} from '../../lib/keys';
 import {Context, ModalType} from '../../lib/context';
+import {validateInput} from '../../lib/helpers';
+import {schema} from '../../lib/validation';
 
 type ModalProps = {
   open: ModalType;
@@ -17,14 +19,15 @@ const Modal: FC<ModalProps> = ({open, outsideRef}) => {
   const modalType = context.open;
 
   const addUser = () => {
-    context.addUser(context.state);
-    context.updateUsers();
-    context.toggleOpen(null);
-    context.updateState(RESET_STATE_KEY);
-  };
-
-  const handleDispatch = (action: string, payload: any) => {
-    context.updateState(action, payload);
+    validateInput(context.state).then(() => {
+      context.addUser(context.state);
+      context.updateUsers();
+      context.toggleOpen(null);
+      context.updateState(RESET_STATE_KEY);
+      context.updateErrors(RESET_STATE_KEY);
+    }).catch((err) => {
+      context.updateErrors(VALIDATE_STATE_KEY, err);
+    });
   };
 
   const closeModal = () => {
@@ -54,14 +57,10 @@ const Modal: FC<ModalProps> = ({open, outsideRef}) => {
         </button>
       </div>
       <div className={styles.inputFields}>
-        <Input heading={'Username'} error={''}
-               onInput={(e) => handleDispatch(USERNAME_KEY, (e.target as HTMLInputElement).value)} type={'text'}
+        <Input heading={'Username'} schema={schema} field={USERNAME_KEY} type={'text'}
                value={context.state[USERNAME_KEY]} />
-        <Input heading={'Email'} error={''}
-               onInput={(e) => handleDispatch(EMAIL_KEY, (e.target as HTMLInputElement).value)}
-               type={'email'} value={context.state[EMAIL_KEY]} />
-        <Input heading={'Password'} error={''}
-               onInput={(e) => handleDispatch(PASSWORD_KEY, (e.target as HTMLInputElement).value)} type={'password'}
+        <Input heading={'Email'} schema={schema} field={EMAIL_KEY} type={'email'} value={context.state[EMAIL_KEY]} />
+        <Input heading={'Password'} schema={schema} field={PASSWORD_KEY} type={'text'}
                value={context.state[PASSWORD_KEY]} />
       </div>
       <div className={styles.footer}>

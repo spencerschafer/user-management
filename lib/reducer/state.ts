@@ -1,6 +1,7 @@
-import {EDIT_USER_KEY, EMAIL_KEY, PASSWORD_KEY, RESET_STATE_KEY, USERNAME_KEY} from './keys';
+import {EDIT_USER_KEY, EMAIL_KEY, PASSWORD_KEY, RESET_STATE_KEY, USER_CLICKED_SUBMIT, USERNAME_KEY} from '../keys';
 
 export const userState = {
+  [USER_CLICKED_SUBMIT]: false,
   [USERNAME_KEY]: '',
   [EMAIL_KEY]: '',
   [PASSWORD_KEY]: '',
