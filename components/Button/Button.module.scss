@@ -13,4 +13,8 @@
     cursor     : pointer;
     transform  : translateY(-1px);
   }
+
+  @media screen and (max-width : 450px) {
+    width : 100%;
+  }
 }
