@@ -79,7 +79,6 @@ export const AppContext: FC = ({children}) => {
   };
 
   useEffect(() => {
-    console.log(state);
     if (errors[USER_CLICKED_SUBMIT]) {
       validateInput(state).then(() => {
         dispatchErrors({
@@ -93,10 +92,6 @@ export const AppContext: FC = ({children}) => {
       });
     }
   }, [state]);
-
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   return (
     <Context.Provider

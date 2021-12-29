@@ -28,8 +28,6 @@ export const validateInput = (state: any) => {
 };
 
 export const getErrorMessage = (key: string, obj: any) => {
-  const result = (_.find(obj.inner, val => val['path'] === key));
-  console.log(result);
   try {
     return (_.find(obj.inner, val => val['path'] === key)).message;
   } catch {

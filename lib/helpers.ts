@@ -1,8 +1,6 @@
 export const getAllUsers = (): any => {
   try {
-    const items = Object.keys(localStorage);
-    console.log(items);
-    return items;
+    return Object.keys(localStorage);
   } catch (err) {
     return [];
   }
