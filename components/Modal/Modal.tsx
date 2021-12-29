@@ -17,20 +17,26 @@ const Modal: FC<ModalProps> = ({open, outsideRef}) => {
   const context = useContext(Context);
   const modalType = context.open;
 
-  const addUser = () => {
+  const validateAndAddUser = () => {
     validateInput(context.state).then(() => {
-      if (containsUniqueEmail(context)) {
-        context.addUser(context.state);
-        context.updateUsers();
-        context.toggleOpen(null);
-        context.updateState(RESET_STATE_KEY);
-        context.updateErrors(RESET_STATE_KEY);
+      if (open === 'add' && containsUniqueEmail(context)) {
+        addUser();
+      } else if (open === 'edit') {
+        addUser();
       } else {
         context.updateErrors(EMAIL_KEY);
       }
     }).catch((err) => {
       context.updateErrors(VALIDATE_STATE_KEY, err);
     });
+  };
+
+  const addUser = () => {
+    context.addUser(context.state);
+    context.updateUsers();
+    context.toggleOpen(null);
+    context.updateState(RESET_STATE_KEY);
+    context.updateErrors(RESET_STATE_KEY);
   };
 
   const closeModal = () => {
@@ -63,12 +69,13 @@ const Modal: FC<ModalProps> = ({open, outsideRef}) => {
       <div className={styles.inputFields}>
         <Input heading={'Username'} schema={schema} field={USERNAME_KEY} type={'text'}
                value={context.state[USERNAME_KEY]} />
-        <Input heading={'Email'} schema={schema} field={EMAIL_KEY} type={'email'} value={context.state[EMAIL_KEY]} />
-        <Input heading={'Password'} schema={schema} field={PASSWORD_KEY} type={'text'}
+        <Input heading={'Email'} schema={schema} field={EMAIL_KEY} type={'email'} value={context.state[EMAIL_KEY]}
+               disabled={open === 'edit'} />
+        <Input heading={'Password'} schema={schema} field={PASSWORD_KEY} type={'password'}
                value={context.state[PASSWORD_KEY]} />
       </div>
       <div className={styles.footer}>
-        <Button onClick={() => addUser()}>
+        <Button onClick={() => validateAndAddUser()}>
           {modalType === 'add' ? 'Add User' : 'Save'}
         </Button>
       </div>
